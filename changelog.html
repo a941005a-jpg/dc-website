@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>更新日誌 - UKU 機器人</title>
+    <title>公告與更新日誌 - UKU 機器人</title>
     <style>
         body {
-            font-family: sans-serif;
+            font-family: "Microsoft JhengHei", sans-serif;
             background-color: #13091e;
             color: #f8fafc;
-            max-width: 700px;
+            max-width: 750px;
             margin: 0 auto;
             padding: 50px 20px;
             line-height: 1.6;
@@ -18,6 +18,35 @@
             color: #38bdf8;
             text-align: center;
         }
+        .back-btn {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #38bdf8;
+            text-decoration: none;
+        }
+        .back-btn:hover {
+            text-decoration: underline;
+        }
+
+        /* 區塊標題 */
+        h2 {
+            color: #facc15; /* 用亮黃色區隔 */
+            border-bottom: 2px solid #1e293b;
+            padding-bottom: 8px;
+            margin-top: 40px;
+        }
+
+        /* 公告專屬卡片 (醒目) */
+        .notice-box {
+            background-color: rgba(250, 204, 21, 0.1);
+            border: 1px solid #facc15;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 0 15px rgba(250, 204, 21, 0.2);
+        }
+
+        /* 一般更新日誌卡片 */
         .update-box {
             background-color: #1a0b2e;
             border: 1px solid #1e293b;
@@ -35,14 +64,8 @@
             margin: 0;
             padding-left: 20px;
         }
-        .back-btn {
-            display: inline-block;
-            margin-bottom: 30px;
-            color: #38bdf8;
-            text-decoration: none;
-        }
-        .back-btn:hover {
-            text-decoration: underline;
+        li {
+            margin-bottom: 6px;
         }
     </style>
 </head>
@@ -50,12 +73,21 @@
 
     <a href="index.html" class="back-btn">&larr; 返回首頁</a>
     
-    <h1>更新日誌</h1>
-    <p style="text-align: center; color: #94a3b8;">追蹤 UKU 機器人的最新功能與修復紀錄</p>
+    <h1>公告與更新日誌</h1>
+    <p style="text-align: center; color: #94a3b8;">隨時掌握 UKU 機器人的最新動態與版本更新</p>
     
-    <br>
+    <!-- ================= 機器人公告區 ================= -->
+    <h2>📢 最新公告</h2>
+    
+    <div class="notice-box">
+        <div class="date">2026年7月27日</div>
+        <h3>⚠️ 伺服器維護通知</h3>
+        <p>機器人預計於本週五進行例行性維護，維護期間匿名訊息功能可能會短暫中斷 5-10 分鐘，造成不便敬請見諒！</p>
+    </div>
 
-    <!-- 每次更新用一個 update-box 包起來 -->
+    <!-- ================= 更新日誌區 ================= -->
+    <h2>🛠️ 更新日誌</h2>
+
     <div class="update-box">
         <div class="date">2026年7月27日</div>
         <h3>v1.1.0 網站正式上線</h3>
