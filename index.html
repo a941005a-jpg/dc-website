@@ -15,6 +15,25 @@
         h1 {
             color: #38bdf8;
         }
+
+/* === 這以下是新增的 CSS === */
+.my-button {
+    background-color: #3b82f6; /* 按鈕顏色（藍色） */
+    color: white;             /* 文字顏色（白色） */
+    padding: 15px 32px;       /* 上下、左右的內距（讓按鈕變大） */
+    text-decoration: none;    /* 拿掉連結底線 */
+    border-radius: 8px;       /* 圓角邊框 */
+    font-size: 16px;          /* 字體大小 */
+    transition: background-color 0.3s; /* 滑鼠移過去時的漸變效果 */
+    display: inline-block;    /* 讓 padding 生效 */
+}
+
+/* 滑鼠移到按鈕上時的樣式 */
+.my-button:hover {
+    background-color: #2563eb; /* 變深一點的藍色 */
+}
+/* === 這以上是新增的 CSS === */
+        
     </style>
 </head>
 <body>
@@ -27,6 +46,16 @@
     <!-- 這是一個超連結，我們給它一個 class 叫 'my-button' -->
     <a href="https://google.com" class="my-button">這是一個連到 Google 的按鈕</a>
     <!-- === 這以上是新增的程式碼 === -->
+    <a href="https://google.com" class="my-button">這是一個連到 Google 的按鈕</a>
+
+    <br><br>
+
+    <!-- === 這以下是新增的第二種按鈕 === -->
+    <!-- 這是一個真正的 button 標籤，onclick 裡面寫的是點擊後要執行的 JavaScript -->
+    <button class="my-button" onclick="alert('恭喜你點擊了按鈕！這是一個由 JavaScript 觸發的視窗。')">
+        這是一個執行功能的按鈕
+    </button>
+    <!-- === 這以上是新增的第二種按鈕 === -->
 
 </body>
 </html>
