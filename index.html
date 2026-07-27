@@ -16,35 +16,29 @@
             color: #38bdf8;
         }
 
-        /* 共用的按鈕基礎樣式（大小、形狀、字體） */
-        .btn {
+        /* 霓虹發光按鈕樣式 */
+        .btn-neon {
+            background-color: rgba(139, 92, 246, 0.3); /* 紫色半透明 (數字 0.3 代表透明度) */
+            color: white;                             /* 文字白色 */
             padding: 15px 32px;
             text-decoration: none;
             border-radius: 8px;
             font-size: 16px;
             display: inline-block;
-            color: white;
-            transition: opacity 0.3s;
-            border: none;
-            cursor: pointer;
+            
+            /* 藍色邊框 */
+            border: 2px solid #38bdf8;
+            
+            /* 發光效果 (box-shadow) */
+            box-shadow: 0 0 15px rgba(56, 189, 248, 0.6); 
+            
+            transition: all 0.3s ease; /* 讓滑鼠移上去時的變化更滑順 */
         }
 
-        /* 按鈕滑鼠移過去時微微變透明 */
-        .btn:hover {
-            opacity: 0.8;
-        }
-
-        /* --- 每個按鈕各自的顏色 --- */
-        .btn-blue {
-            background-color: #3b82f6; /* 藍色 */
-        }
-
-        .btn-green {
-            background-color: #10b981; /* 綠色 */
-        }
-
-        .btn-purple {
-            background-color: #8b5cf6; /* 紫色 */
+        /* 滑鼠移上去時，發光變得更強烈、背景稍微變亮 */
+        .btn-neon:hover {
+            background-color: rgba(139, 92, 246, 0.5);
+            box-shadow: 0 0 25px rgba(56, 189, 248, 0.9), 0 0 10px rgba(139, 92, 246, 0.8);
         }
     </style>
 </head>
@@ -54,20 +48,8 @@
 
     <br><br>
     
-    <!-- 第一個按鈕：藍色 -->
-    <a href="https://google.com" class="btn btn-blue">這是一個連到 Google 的按鈕</a>
-
-    <br><br>
-
-    <!-- 第二個按鈕：綠色 -->
-    <a href="https://github.com" class="btn btn-green">這是一個連到 GitHub 的按鈕</a>
-
-    <br><br>
-
-    <!-- 第三個按鈕：紫色（功能按鈕） -->
-    <button class="btn btn-purple" onclick="alert('恭喜你點擊了紫色按鈕！')">
-        這是一個執行功能的按鈕
-    </button>
+    <!-- 發光按鈕 -->
+    <a href="https://google.com" class="btn-neon">這是一個會發光的霓虹按鈕</a>
 
 </body>
 </html>
