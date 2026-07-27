@@ -6,6 +6,14 @@
     <title>UKU專用網頁</title>
     <style>
         body {
+<!-- 右上角使用者資訊區 -->
+<div id="user-info" style="position: absolute; top: 20px; right: 30px; display: flex; align-items: center; gap: 10px; color: #f8fafc;">
+    <!-- 還沒登入時顯示的按鈕 -->
+    <a id="login-btn" href="https://discord.com/api/oauth2/authorize?client_id=你的CLIENT_ID&redirect_uri=https://dc-website-seven.vercel.app/&response_type=token&scope=identify" style="background-color: #5865F2; color: white; padding: 8px 16px; text-decoration: none; border-radius: 6px; font-size: 14px; font-weight: bold;">
+        登入 Discord
+    </a>
+</div>
+            
             font-family: sans-serif;
             text-align: center;
             padding-top: 100px;
@@ -159,3 +167,34 @@
 
 </body>
 </html>
+<script>
+    // 1. 抓取 Discord 網址列回傳的 Token
+    const fragment = new URLSearchParams(window.location.hash.slice(1));
+    const accessToken = fragment.get('access_token');
+
+    if (accessToken) {
+        // 2. 如果有抓到 Token，去跟 Discord 官方要使用者資料
+        fetch('https://discord.com/api/users/@me', {
+            headers: {
+                authorization: `Bearer ${accessToken}`
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            const userId = data.id;
+            const avatarHash = data.avatar;
+            const username = data.username;
+
+            // 3. 組合 Discord 頭貼的完整圖片網址
+            const avatarUrl = `https://cdn.discordapp.com/avatars/${userId}/${avatarHash}.png`;
+
+            // 4. 把右上角的登入按鈕換成使用者的「頭貼 + 名字」
+            const userInfoDiv = document.getElementById('user-info');
+            userInfoDiv.innerHTML = `
+                <img src="${avatarUrl}" alt="頭貼" style="width: 36px; height: 36px; border-radius: 50%; border: 2px solid #5865F2;">
+                <span style="font-size: 14px; font-weight: bold;">${username}</span>
+            `;
+        })
+        .catch(error => console.error('無法取得使用者資料', error));
+    }
+</script>
