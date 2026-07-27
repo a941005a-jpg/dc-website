@@ -11,15 +11,25 @@
             padding-top: 100px;
             background-color: #0f172a;
             color: #f8fafc;
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
+
+        .main-content {
+            flex: 1;
+        }
+
         h1 {
             color: #38bdf8;
         }
 
         /* 霓虹發光按鈕樣式 */
         .btn-neon {
-            background-color: rgba(139, 92, 246, 0.3); /* 紫色半透明 (數字 0.3 代表透明度) */
-            color: white;                             /* 文字白色 */
+            background-color: rgba(139, 92, 246, 0.3); /* 紫色半透明 */
+            color: white;                            /* 文字白色 */
             padding: 15px 32px;
             text-decoration: none;
             border-radius: 8px;
@@ -32,26 +42,116 @@
             /* 發光效果 (box-shadow) */
             box-shadow: 0 0 15px rgba(56, 189, 248, 0.6); 
             
-            transition: all 0.3s ease; /* 讓滑鼠移上去時的變化更滑順 */
-            font-family:  "Microsoft JhengHei", sans-serif; /* 改成微軟正黑體 */
+            transition: all 0.3s ease;
+            font-family: "Microsoft JhengHei", sans-serif;
             font-weight: bold;
         }
 
-        /* 滑鼠移上去時，發光變得更強烈、背景稍微變亮 */
+        /* 滑鼠移上去時的發光效果 */
         .btn-neon:hover {
             background-color: rgba(139, 92, 246, 0.5);
             box-shadow: 0 0 25px rgba(56, 189, 248, 0.9), 0 0 10px rgba(139, 92, 246, 0.8);
         }
+
+        /* === 頁尾 (Footer) 樣式 === */
+        footer {
+            background-color: #090d16;
+            padding: 40px 20px;
+            border-top: 1px solid #1e293b;
+            margin-top: 80px;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            max-width: 800px;
+            margin: 0 auto 20px auto;
+            text-align: left;
+        }
+
+        .footer-column h4 {
+            color: #38bdf8;
+            font-size: 16px;
+            margin-bottom: 12px;
+        }
+
+        .footer-column ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-column li {
+            margin-bottom: 8px;
+        }
+
+        .footer-column a {
+            color: #94a3b8;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.2s;
+        }
+
+        .footer-column a:hover {
+            color: #ffffff;
+            text-decoration: underline;
+        }
+
+        .footer-copy {
+            color: #64748b;
+            font-size: 12px;
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
-    <h1>早安你好！</h1>
-    <p>匿名機器人專用網站。</p>
 
-    <br><br>
-    
-    <!-- 發光按鈕 -->
-    <a href="https://reurl.cc/zObdOy" class="btn-neon">邀請機器人</a>
+    <!-- 主要內容區 -->
+    <div class="main-content">
+        <h1>早安你好！</h1>
+        <p>匿名機器人專用網站。</p>
+
+        <br><br>
+        
+        <!-- 發光按鈕 -->
+        <a href="https://reurl.cc/zObdOy" class="btn-neon">邀請機器人</a>
+    </div>
+
+    <!-- 頁尾區塊 -->
+    <footer>
+        <div class="footer-links">
+            <div class="footer-column">
+                <h4>機器人資訊</h4>
+                <ul>
+                    <li><a href="https://reurl.cc/zObdOy">立即邀請</a></li>
+                    <li><a href="#">指令說明</a></li>
+                    <li><a href="#">更新日誌</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h4>相關連結</h4>
+                <ul>
+                    <li><a href="https://github.com">GitHub 專案</a></li>
+                    <li><a href="https://vercel.com">Vercel 官網</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h4>支援與協助</h4>
+                <ul>
+                    <li><a href="#">支援群組</a></li>
+                    <li><a href="#">問題回報</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-copy">
+            &copy; 2026 匿名機器人. All rights reserved.
+        </div>
+    </footer>
 
 </body>
 </html>
