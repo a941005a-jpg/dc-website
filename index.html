@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UKU專用網頁</title>
+    <title>公告 - UKU機器人</title>
     <style>
         * {
             box-sizing: border-box;
@@ -20,7 +20,7 @@
             justify-content: space-between;
         }
 
-        /* ====(導覽列區塊)==== */
+        /*#===(導覽列區塊)===*/
         header {
             display: flex;
             justify-content: space-between;
@@ -33,7 +33,6 @@
             z-index: 100;
         }
 
-        /* 左上角大 LOGO */
         .logo {
             font-size: 24px;
             font-weight: bold;
@@ -42,7 +41,6 @@
             text-shadow: 0 0 10px rgba(56, 189, 248, 0.5);
         }
 
-        /* 中間導覽選單 */
         nav {
             display: flex;
             gap: 30px;
@@ -58,12 +56,10 @@
             color: #38bdf8;
         }
 
-        /* 右上角使用者頭貼與選單容器 */
         .user-menu-container {
             position: relative;
         }
 
-        /* 頭貼按鈕 */
         .avatar-btn {
             background: none;
             border: none;
@@ -80,7 +76,6 @@
             background-color: #334155;
         }
 
-        /* 下拉選單 */
         .dropdown-menu {
             position: absolute;
             right: 0;
@@ -115,46 +110,63 @@
             color: #38bdf8;
         }
 
-        /* ====(主要內容與按鈕區塊)==== */
+        /*#===(首頁公告內容區塊)===*/
         .main-content {
-            text-align: center;
-            padding: 80px 20px;
+            max-width: 750px;
+            margin: 0 auto;
+            padding: 50px 20px;
             flex: 1;
+            width: 100%;
         }
 
         h1 {
             color: #38bdf8;
-            font-size: 42px;
+            text-align: center;
+            font-size: 38px;
             margin-bottom: 10px;
         }
 
-        p {
+        .subtitle {
+            text-align: center;
             color: #94a3b8;
-            font-size: 18px;
-            margin-bottom: 30px;
-        }
-
-        .btn-neon {
-            background-color: rgba(139, 92, 246, 0.3);
-            color: white;
-            padding: 15px 32px;
-            text-decoration: none;
-            border-radius: 8px;
             font-size: 16px;
-            display: inline-block;
-            border: 2px solid #38bdf8;
-            box-shadow: 0 0 15px rgba(56, 189, 248, 0.6);
-            transition: all 0.3s ease;
-            font-weight: bold;
-            margin: 10px;
+            margin-bottom: 40px;
         }
 
-        .btn-neon:hover {
-            background-color: rgba(139, 92, 246, 0.5);
-            box-shadow: 0 0 25px rgba(56, 189, 248, 0.9), 0 0 10px rgba(139, 92, 246, 0.8);
+        h2 {
+            color: #facc15;
+            border-bottom: 2px solid #1e293b;
+            padding-bottom: 8px;
+            margin-top: 20px;
+            font-size: 20px;
         }
 
-        /* ====(頁尾區塊)==== */
+        .notice-box {
+            background-color: rgba(250, 204, 21, 0.1);
+            border: 1px solid #facc15;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 0 15px rgba(250, 204, 21, 0.2);
+        }
+
+        .date {
+            color: #94a3b8;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+
+        .notice-box h3 {
+            color: #f8fafc;
+            margin-bottom: 8px;
+        }
+
+        .notice-box p {
+            color: #cbd5e1;
+            line-height: 1.6;
+        }
+
+        /*#===(頁尾區塊)===*/
         footer {
             background-color: #090d16;
             padding: 40px 20px;
@@ -215,8 +227,8 @@
         <a href="index.html" class="logo">UKU機器人</a>
 
         <nav>
-            <a href="changelog.html#notice">公告</a>
-            <a href="https://reurl.cc/zObdOy" target="_blank">邀請機器人</a>
+            <a href="index.html">公告</a>
+            <a href="invite.html">邀請機器人</a>
             <a href="changelog.html">更新日誌</a>
         </nav>
 
@@ -233,12 +245,24 @@
         </div>
     </header>
 
-    <!--#===(主要內容區塊)===-->
+    <!--#===(首頁公告內容區塊)===-->
     <div class="main-content">
-        <h1>早安你好！</h1>
-        <p>UKU機器人專用網站。</p>
+        <h1>最新公告</h1>
+        <p class="subtitle">隨時掌握 UKU 機器人的重要通知與最新消息</p>
         
-        <a href="https://reurl.cc/zObdOy" class="btn-neon" target="_blank">邀請機器人</a>
+        <h2>📢 重要通知</h2>
+        <br>
+        <div class="notice-box">
+            <div class="date">2026年7月27日</div>
+            <h3>⚠️ 伺服器維護通知</h3>
+            <p>機器人預計於本週五進行例行性維護，維護期間匿名訊息功能可能會短暫中斷 5-10 分鐘，造成不便敬請見諒！</p>
+        </div>
+
+        <div class="notice-box">
+            <div class="date">2026年7月20日</div>
+            <h3>🎉 官方網站正式上線</h3>
+            <p>歡迎大家使用 UKU 機器人專用網站！現在可以透過導覽列查看更新日誌與機器人相關資訊。</p>
+        </div>
     </div>
 
     <!--#===(頁尾區塊)===-->
@@ -247,7 +271,7 @@
             <div class="footer-column">
                 <h4>機器人資訊</h4>
                 <ul>
-                    <li><a href="https://reurl.cc/zObdOy" target="_blank">立即邀請</a></li>
+                    <li><a href="invite.html">立即邀請</a></li>
                     <li><a href="#">指令說明</a></li>
                     <li><a href="changelog.html">更新日誌</a></li>
                 </ul>
