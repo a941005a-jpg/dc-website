@@ -20,7 +20,7 @@
             justify-content: space-between;
         }
 
-        /*#===(導覽列區塊)===*/
+        #===(導覽列區塊)===
         header {
             display: flex;
             justify-content: space-between;
@@ -110,7 +110,7 @@
             color: #38bdf8;
         }
 
-        /*#===(公告內容區塊)===*/
+        #===(公告內容區塊)===
         .main-content {
             max-width: 750px;
             margin: 0 auto;
@@ -166,7 +166,7 @@
             line-height: 1.6;
         }
 
-        /*#===(頁尾區塊)===*/
+        #===(頁尾區塊)===
         footer {
             background-color: #090d16;
             padding: 40px 20px;
@@ -222,13 +222,14 @@
 </head>
 <body>
 
-    <!--#===(導覽列區塊)===-->
+    #===(導覽列區塊)===
     <header>
         <a href="index.html" class="logo">UKU機器人</a>
 
         <nav>
             <a href="index.html">公告</a>
             <a href="invite.html">邀請機器人</a>
+            <a href="features.html">功能介紹</a>
             <a href="changelog.html">更新日誌</a>
         </nav>
 
@@ -245,7 +246,7 @@
         </div>
     </header>
 
-    <!--#===(公告內容區塊)===-->
+    #===(公告內容區塊)===
     <div class="main-content">
         <h1>最新公告</h1>
         <p class="subtitle">隨時掌握 UKU 機器人的重要通知與最新消息</p>
@@ -255,19 +256,24 @@
         <div class="notice-box">
             <div class="date">2026年7月27日</div>
             <h3>⚠️ 伺服器維護通知</h3>
-            <p>機器人及網頁維護製作中！</p>
+            <p>機器人預計於本週五進行例行性維護，維護期間匿名訊息功能可能會短暫中斷 5-10 分鐘，造成不便敬請見諒！</p>
         </div>
 
+        <div class="notice-box">
+            <div class="date">2026年7月20日</div>
+            <h3>🎉 官方網站正式上線</h3>
+            <p>歡迎大家使用 UKU 機器人專用網站！現在可以透過導覽列查看更新日誌與機器人相關資訊。</p>
+        </div>
     </div>
 
-    <!--#===(頁尾區塊)===-->
+    #===(頁尾區塊)===
     <footer>
         <div class="footer-links">
             <div class="footer-column">
                 <h4>機器人資訊</h4>
                 <ul>
                     <li><a href="invite.html">立即邀請</a></li>
-                    <li><a href="#">指令說明</a></li>
+                    <li><a href="features.html">功能介紹</a></li>
                     <li><a href="changelog.html">更新日誌</a></li>
                 </ul>
             </div>
@@ -294,7 +300,7 @@
         </div>
     </footer>
 
-    <!--#===(JavaScript互動與Discord驗證邏輯)===-->
+    #===(JavaScript互動與Discord驗證邏輯)===
     <script>
         function toggleMenu() {
             const menu = document.getElementById('dropdownMenu');
