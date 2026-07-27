@@ -16,46 +16,58 @@
             color: #38bdf8;
         }
 
-/* === 這以下是新增的 CSS === */
-.my-button {
-    background-color: #3b82f6; /* 按鈕顏色（藍色） */
-    color: white;             /* 文字顏色（白色） */
-    padding: 15px 32px;       /* 上下、左右的內距（讓按鈕變大） */
-    text-decoration: none;    /* 拿掉連結底線 */
-    border-radius: 8px;       /* 圓角邊框 */
-    font-size: 16px;          /* 字體大小 */
-    transition: background-color 0.3s; /* 滑鼠移過去時的漸變效果 */
-    display: inline-block;    /* 讓 padding 生效 */
-}
+        /* 共用的按鈕基礎樣式（大小、形狀、字體） */
+        .btn {
+            padding: 15px 32px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 16px;
+            display: inline-block;
+            color: white;
+            transition: opacity 0.3s;
+            border: none;
+            cursor: pointer;
+        }
 
-/* 滑鼠移到按鈕上時的樣式 */
-.my-button:hover {
-    background-color: #2563eb; /* 變深一點的藍色 */
-}
-/* === 這以上是新增的 CSS === */
-        
+        /* 按鈕滑鼠移過去時微微變透明 */
+        .btn:hover {
+            opacity: 0.8;
+        }
+
+        /* --- 每個按鈕各自的顏色 --- */
+        .btn-blue {
+            background-color: #3b82f6; /* 藍色 */
+        }
+
+        .btn-green {
+            background-color: #10b981; /* 綠色 */
+        }
+
+        .btn-purple {
+            background-color: #8b5cf6; /* 紫色 */
+        }
     </style>
 </head>
 <body>
     <h1>哈囉，世界！</h1>
     <p>這是我用 Vercel 成功部署的第一個網站。</p>
 
-    <!-- === 這以下是新增的程式碼 === -->
-    <br><br> <!-- 這是兩個換行，讓按鈕跟上面的文字有點距離 -->
+    <br><br>
     
-    <!-- 這是一個超連結，我們給它一個 class 叫 'my-button' -->
-    <a href="https://google.com" class="my-button">這是一個連到 Google 的按鈕</a>
-    <!-- === 這以上是新增的程式碼 === -->
-    <a href="https://google.com" class="my-button">這是一個連到 Google 的按鈕</a>
+    <!-- 第一個按鈕：藍色 -->
+    <a href="https://google.com" class="btn btn-blue">這是一個連到 Google 的按鈕</a>
 
     <br><br>
 
-    <!-- === 這以下是新增的第二種按鈕 === -->
-    <!-- 這是一個真正的 button 標籤，onclick 裡面寫的是點擊後要執行的 JavaScript -->
-    <button class="my-button" onclick="alert('恭喜你點擊了按鈕！這是一個由 JavaScript 觸發的視窗。')">
+    <!-- 第二個按鈕：綠色 -->
+    <a href="https://github.com" class="btn btn-green">這是一個連到 GitHub 的按鈕</a>
+
+    <br><br>
+
+    <!-- 第三個按鈕：紫色（功能按鈕） -->
+    <button class="btn btn-purple" onclick="alert('恭喜你點擊了紫色按鈕！')">
         這是一個執行功能的按鈕
     </button>
-    <!-- === 這以上是新增的第二種按鈕 === -->
 
 </body>
 </html>
