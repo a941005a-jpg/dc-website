@@ -5,63 +5,156 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>UKU專用網頁</title>
     <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
         body {
-<!-- 右上角使用者資訊區 -->
-<div id="user-info" style="position: absolute; top: 20px; right: 30px; display: flex; align-items: center; gap: 10px; color: #f8fafc;">
-    <!-- 還沒登入時顯示的按鈕 -->
-    <a id="login-btn" href="https://discord.com/api/oauth2/authorize?client_id=你的CLIENT_ID&redirect_uri=https://dc-website-seven.vercel.app/&response_type=token&scope=identify" style="background-color: #5865F2; color: white; padding: 8px 16px; text-decoration: none; border-radius: 6px; font-size: 14px; font-weight: bold;">
-        登入 Discord
-    </a>
-</div>
-            
-            font-family: sans-serif;
-            text-align: center;
-            padding-top: 100px;
+            font-family: "Microsoft JhengHei", sans-serif;
             background-color: #13091e;
             color: #f8fafc;
-            margin: 0;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
         }
 
+        /* ====(導覽列區塊)==== */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            background-color: rgba(26, 11, 46, 0.9);
+            border-bottom: 1px solid #1e293b;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        /* 左上角大 LOGO */
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #38bdf8;
+            text-decoration: none;
+            text-shadow: 0 0 10px rgba(56, 189, 248, 0.5);
+        }
+
+        /* 中間導覽選單 */
+        nav {
+            display: flex;
+            gap: 30px;
+        }
+        nav a {
+            color: #cbd5e1;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        nav a:hover {
+            color: #38bdf8;
+        }
+
+        /* 右上角使用者頭貼與選單容器 */
+        .user-menu-container {
+            position: relative;
+        }
+
+        /* 頭貼按鈕 */
+        .avatar-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+        }
+        .user-avatar {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            border: 2px solid #5865F2;
+            object-fit: cover;
+            background-color: #334155;
+        }
+
+        /* 下拉選單 */
+        .dropdown-menu {
+            position: absolute;
+            right: 0;
+            top: 55px;
+            background-color: #1a0b2e;
+            border: 1px solid #334155;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            width: 160px;
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+            z-index: 101;
+        }
+        .dropdown-menu.show {
+            display: flex;
+        }
+        .dropdown-item {
+            padding: 12px 16px;
+            color: #f8fafc;
+            text-decoration: none;
+            font-size: 14px;
+            text-align: center;
+            transition: background 0.2s;
+            background: none;
+            border: none;
+            width: 100%;
+            cursor: pointer;
+        }
+        .dropdown-item:hover {
+            background-color: #2e1065;
+            color: #38bdf8;
+        }
+
+        /* ====(主要內容與按鈕區塊)==== */
         .main-content {
+            text-align: center;
+            padding: 80px 20px;
             flex: 1;
         }
 
         h1 {
             color: #38bdf8;
+            font-size: 42px;
+            margin-bottom: 10px;
         }
 
-        /* 霓虹發光按鈕樣式 */
+        p {
+            color: #94a3b8;
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+
         .btn-neon {
-            background-color: rgba(139, 92, 246, 0.3); /* 紫色半透明 */
-            color: white;                            /* 文字白色 */
+            background-color: rgba(139, 92, 246, 0.3);
+            color: white;
             padding: 15px 32px;
             text-decoration: none;
             border-radius: 8px;
             font-size: 16px;
             display: inline-block;
-            
-            /* 藍色邊框 */
             border: 2px solid #38bdf8;
-            
-            /* 發光效果 (box-shadow) */
-            box-shadow: 0 0 15px rgba(56, 189, 248, 0.6); 
-            
+            box-shadow: 0 0 15px rgba(56, 189, 248, 0.6);
             transition: all 0.3s ease;
-            font-family: "Microsoft JhengHei", sans-serif;
             font-weight: bold;
+            margin: 10px;
         }
 
-        /* 滑鼠移上去時的發光效果 */
         .btn-neon:hover {
             background-color: rgba(139, 92, 246, 0.5);
             box-shadow: 0 0 25px rgba(56, 189, 248, 0.9), 0 0 10px rgba(139, 92, 246, 0.8);
         }
 
-        /* === 頁尾 (Footer) 樣式 === */
+        /* ====(頁尾區塊)==== */
         footer {
             background-color: #090d16;
             padding: 40px 20px;
@@ -111,33 +204,50 @@
             color: #64748b;
             font-size: 12px;
             margin-top: 20px;
+            text-align: center;
         }
     </style>
 </head>
 <body>
 
-    <!-- 主要內容區 -->
+    <!--#===(導覽列區塊)===-->
+    <header>
+        <a href="index.html" class="logo">UKU機器人</a>
+
+        <nav>
+            <a href="changelog.html#notice">公告</a>
+            <a href="https://reurl.cc/zObdOy" target="_blank">邀請機器人</a>
+            <a href="changelog.html">更新日誌</a>
+        </nav>
+
+        <div class="user-menu-container">
+            <button class="avatar-btn" onclick="toggleMenu()">
+                <img id="user-avatar-img" src="data:image/svg+xml;utf8,<svg fill='%2394a3b8' height='42' viewBox='0 0 24 24' width='42' xmlns='http://www.w3.org/2000/svg'><path d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z'/></svg>" class="user-avatar" alt="使用者頭貼">
+            </button>
+
+            <div id="dropdownMenu" class="dropdown-menu">
+                <div id="auth-action">
+                    <a href="https://discord.com/api/oauth2/authorize?client_id=1516641240920363093&redirect_uri=https://dc-website-seven.vercel.app/&response_type=token&scope=identify" class="dropdown-item">登入 Discord</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!--#===(主要內容區塊)===-->
     <div class="main-content">
         <h1>早安你好！</h1>
         <p>UKU機器人專用網站。</p>
-<!-- 把下面的 CLIENT_ID 換成你在開發者後台看到的 Client ID -->
-<!-- 把 REDIRECT_URI 換成你的 Vercel 網址 -->
-<a href="https://discord.com/api/oauth2/authorize?client_id=1516641240920363093&redirect_uri=https://dc-website-seven.vercel.app/&response_type=token&scope=identify" class="btn-neon">
-    使用 Discord 登入以解鎖
-</a>
-        <br><br>
         
-        <!-- 發光按鈕 -->
-        <a href="https://reurl.cc/zObdOy" class="btn-neon">邀請機器人</a>
+        <a href="https://reurl.cc/zObdOy" class="btn-neon" target="_blank">邀請機器人</a>
     </div>
 
-    <!-- 頁尾區塊 -->
+    <!--#===(頁尾區塊)===-->
     <footer>
         <div class="footer-links">
             <div class="footer-column">
                 <h4>機器人資訊</h4>
                 <ul>
-                    <li><a href="https://reurl.cc/zObdOy">立即邀請</a></li>
+                    <li><a href="https://reurl.cc/zObdOy" target="_blank">立即邀請</a></li>
                     <li><a href="#">指令說明</a></li>
                     <li><a href="changelog.html">更新日誌</a></li>
                 </ul>
@@ -146,15 +256,15 @@
             <div class="footer-column">
                 <h4>相關連結</h4>
                 <ul>
-                    <li><a href="https://github.com">GitHub 專案</a></li>
-                    <li><a href="https://vercel.com">Vercel 官網</a></li>
+                    <li><a href="https://github.com" target="_blank">GitHub 專案</a></li>
+                    <li><a href="https://vercel.com" target="_blank">Vercel 官網</a></li>
                 </ul>
             </div>
 
             <div class="footer-column">
                 <h4>支援與協助</h4>
                 <ul>
-                    <li><a href="https://discord.gg/TeNWMPkR4M">支援群組</a></li>
+                    <li><a href="https://discord.gg/TeNWMPkR4M" target="_blank">支援群組</a></li>
                     <li><a href="mailto:a941005a@gmail.com?subject=UKU機器人問題回報">問題回報</a></li>
                 </ul>
             </div>
@@ -165,36 +275,64 @@
         </div>
     </footer>
 
+    <!--#===(JavaScript互動與Discord驗證邏輯)===-->
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('dropdownMenu');
+            menu.classList.toggle('show');
+        }
+
+        window.addEventListener('click', function(e) {
+            if (!e.target.closest('.user-menu-container')) {
+                const menu = document.getElementById('dropdownMenu');
+                if (menu.classList.contains('show')) {
+                    menu.classList.remove('show');
+                }
+            }
+        });
+
+        const fragment = new URLSearchParams(window.location.hash.slice(1));
+        const accessToken = fragment.get('access_token');
+
+        if (accessToken) {
+            localStorage.setItem('discord_token', accessToken);
+            window.history.replaceState({}, document.title, window.location.pathname);
+        }
+
+        const savedToken = localStorage.getItem('discord_token');
+
+        if (savedToken) {
+            fetch('https://discord.com/api/users/@me', {
+                headers: {
+                    authorization: `Bearer ${savedToken}`
+                }
+            })
+            .then(response => {
+                if (!response.ok) throw new Error('Token 失效');
+                return response.json();
+            })
+            .then(data => {
+                const userId = data.id;
+                const avatarHash = data.avatar;
+                const avatarUrl = avatarHash 
+                    ? `https://cdn.discordapp.com/avatars/${userId}/${avatarHash}.png`
+                    : 'https://cdn.discordapp.com/embed/avatars/0.png';
+
+                document.getElementById('user-avatar-img').src = avatarUrl;
+
+                document.getElementById('auth-action').innerHTML = `
+                    <button onclick="logout()" class="dropdown-item" style="color: #ef4444; font-weight: bold;">登出帳號</button>
+                `;
+            })
+            .catch(() => {
+                localStorage.removeItem('discord_token');
+            });
+        }
+
+        function logout() {
+            localStorage.removeItem('discord_token');
+            window.location.href = window.location.pathname;
+        }
+    </script>
 </body>
 </html>
-<script>
-    // 1. 抓取 Discord 網址列回傳的 Token
-    const fragment = new URLSearchParams(window.location.hash.slice(1));
-    const accessToken = fragment.get('access_token');
-
-    if (accessToken) {
-        // 2. 如果有抓到 Token，去跟 Discord 官方要使用者資料
-        fetch('https://discord.com/api/users/@me', {
-            headers: {
-                authorization: `Bearer ${accessToken}`
-            }
-        })
-        .then(response => response.json())
-        .then(data => {
-            const userId = data.id;
-            const avatarHash = data.avatar;
-            const username = data.username;
-
-            // 3. 組合 Discord 頭貼的完整圖片網址
-            const avatarUrl = `https://cdn.discordapp.com/avatars/${userId}/${avatarHash}.png`;
-
-            // 4. 把右上角的登入按鈕換成使用者的「頭貼 + 名字」
-            const userInfoDiv = document.getElementById('user-info');
-            userInfoDiv.innerHTML = `
-                <img src="${avatarUrl}" alt="頭貼" style="width: 36px; height: 36px; border-radius: 50%; border: 2px solid #5865F2;">
-                <span style="font-size: 14px; font-weight: bold;">${username}</span>
-            `;
-        })
-        .catch(error => console.error('無法取得使用者資料', error));
-    }
-</script>
