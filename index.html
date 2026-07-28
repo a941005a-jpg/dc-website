@@ -111,15 +111,16 @@
             background-color: #334155;
         }
 
+        /* 修正下拉選單：加大字體、減少空白、增加高度 */
         .dropdown-menu {
             position: absolute;
             right: 0;
             top: 55px;
             background-color: #1a0b2e;
             border: 1px solid #334155;
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-            width: 160px;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.6);
+            width: 180px;
             display: none;
             flex-direction: column;
             overflow: hidden;
@@ -129,10 +130,11 @@
             display: flex;
         }
         .dropdown-item {
-            padding: 12px 16px;
+            padding: 16px 20px; /* 增加上下左右空間，讓按鈕變高 */
             color: #f8fafc;
             text-decoration: none;
-            font-size: 14px;
+            font-size: 16px; /* 放大字體 */
+            font-weight: bold;
             text-align: center;
             transition: background 0.2s;
             background: none;
@@ -258,22 +260,25 @@
         @media (max-width: 768px) {
             header {
                 padding: 15px 20px;
-                flex-wrap: wrap;
+                position: relative;
             }
             .hamburger-btn {
                 display: flex;
             }
+            /* 修正手機版選單展開時的絕對定位，避免把版面撐壞 */
             nav {
                 display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
                 width: 100%;
                 flex-direction: column;
-                background-color: #1a0b2e;
-                border: 1px solid #334155;
-                border-radius: 8px;
-                padding: 15px;
-                margin-top: 15px;
+                background-color: rgba(26, 11, 46, 0.98);
+                border-bottom: 1px solid #334155;
+                padding: 20px;
                 gap: 15px;
                 text-align: center;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.5);
             }
             nav.show-nav {
                 display: flex;
@@ -287,13 +292,6 @@
     <header>
         <a href="index.html" class="logo">UKU機器人</a>
 
-        <!-- 手機版漢堡選單按鈕 -->
-        <button class="hamburger-btn" onclick="toggleNavMenu()">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
-
         <nav id="navMenu">
             <a href="index.html">公告</a>
             <a href="invite.html">邀請機器人</a>
@@ -301,21 +299,30 @@
             <a href="changelog.html">更新日誌</a>
         </nav>
 
-        <div class="user-menu-container">
-            <button class="avatar-btn" onclick="toggleMenu()">
-                <img id="user-avatar-img" src="data:image/svg+xml;utf8,<svg fill='%2394a3b8' height='42' viewBox='0 0 24 24' width='42' xmlns='http://www.w3.org/2000/svg'><path d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z'/></svg>" class="user-avatar" alt="使用者頭貼">
-            </button>
+        <div style="display: flex; align-items: center; gap: 15px;">
+            <div class="user-menu-container">
+                <button class="avatar-btn" onclick="toggleMenu()">
+                    <img id="user-avatar-img" src="data:image/svg+xml;utf8,<svg fill='%2394a3b8' height='42' viewBox='0 0 24 24' width='42' xmlns='http://www.w3.org/2000/svg'><path d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z'/></svg>" class="user-avatar" alt="使用者頭貼">
+                </button>
 
-            <div id="dropdownMenu" class="dropdown-menu">
-                <div id="auth-action">
-                    <a href="https://discord.com/api/oauth2/authorize?client_id=1516641240920363093&redirect_uri=https://dc-website-seven.vercel.app/&response_type=token&scope=identify" class="dropdown-item">登入 Discord</a>
+                <div id="dropdownMenu" class="dropdown-menu">
+                    <div id="auth-action">
+                        <a href="https://discord.com/api/oauth2/authorize?client_id=1516641240920363093&redirect_uri=https://dc-website-seven.vercel.app/&response_type=token&scope=identify" class="dropdown-item">登入 Discord</a>
+                    </div>
                 </div>
             </div>
+
+            <!-- 手機版漢堡選單按鈕移至右側與頭貼並肩 -->
+            <button class="hamburger-btn" onclick="toggleNavMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </div>
     </header>
 
     <!-- 公告內容區塊 -->
-    <div class="main-content">
+    <main class="main-content">
         <h1>最新公告</h1>
         <p class="subtitle">隨時掌握 UKU 機器人的重要通知與最新消息</p>
         
@@ -332,7 +339,7 @@
             <h3>🎉 官方網站正式上線</h3>
             <p>歡迎大家使用 UKU 機器人專用網站！現在可以透過導覽列查看更新日誌與機器人相關資訊。</p>
         </div>
-    </div>
+    </main>
 
     <!-- 頁尾區塊 -->
     <footer>
@@ -370,23 +377,25 @@
 
     <!-- JavaScript互動與Discord驗證邏輯 -->
     <script>
-        // 切換手機版導覽列選單
         function toggleNavMenu() {
             const navMenu = document.getElementById('navMenu');
             navMenu.classList.toggle('show-nav');
         }
 
-        // 頭貼下拉選單
         function toggleMenu() {
             const menu = document.getElementById('dropdownMenu');
             menu.classList.toggle('show');
         }
 
         window.addEventListener('click', function(e) {
-            if (!e.target.closest('.user-menu-container')) {
+            if (!e.target.closest('.user-menu-container') && !e.target.closest('.hamburger-btn') && !e.target.closest('nav')) {
                 const menu = document.getElementById('dropdownMenu');
                 if (menu.classList.contains('show')) {
                     menu.classList.remove('show');
+                }
+                const navMenu = document.getElementById('navMenu');
+                if (navMenu.classList.contains('show-nav')) {
+                    navMenu.classList.remove('show-nav');
                 }
             }
         });
